@@ -16,5 +16,5 @@
 * `,a` to search using `the_silver_searcher` for the word under the cursor
 * `,g` to fuzzy search for all files indexed by git
 * `,f` to fuzzy search for all files
-* `,b' to see open buffers
+* `,b` to see open buffers
 * `,A` to fuzzy search for string inside files using Ag
