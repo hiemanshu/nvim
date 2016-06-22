@@ -7,4 +7,14 @@
 * Sit back and relax while VimPlug does its job
 
 # Shortcuts
+`<leader>` is `,`
 
+* `Ctrl-j` to open YouCompleteMe completion
+* `,y` to show YankRing
+* `Ctrl-P` to toggle NERDTree
+* `,/` to toggle comments
+* `,a` to search using `the_silver_searcher` for the word under the cursor
+* `,g` to fuzzy search for all files indexed by git
+* `,f` to fuzzy search for all files
+* `,b' to see open buffers
+* `,A` to fuzzy search for string inside files using Ag
