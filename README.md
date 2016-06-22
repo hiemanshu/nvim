@@ -18,3 +18,7 @@
 * `,f` to fuzzy search for all files
 * `,b` to see open buffers
 * `,A` to fuzzy search for string inside files using Ag
+* `↑` arrow to move to the pane above
+* `↓` arrow to move to the pane below
+* `←` arrow to move to the left pane
+* `→` arrow to move to the right pane

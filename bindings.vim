@@ -38,8 +38,20 @@ nmap <C-E> :b#<CR>
 " ,e to fast finding files. just type beginning of a name and hit TAB
 nmap <leader>e :e **/
 
+" Disable Arrow keys in Escape mode
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+" Disable Arrow keys in Insert mode
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
 " easy split navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <left> <C-w>h
+nnoremap <up> <C-w>k
+nnoremap <down> <C-w>j
+nnoremap <right> <C-w>l
