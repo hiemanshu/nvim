@@ -75,7 +75,8 @@ endif
 " ,f to open all FZF files
 nmap <leader>g :GFiles<CR>
 nmap <leader>f :Files<CR>
-nmap <leader>a :Buffers<CR>
+nmap <leader>b :Buffers<CR>
+nmap <leader>A :Ag<CR>
 
 " delimitMate
 let g:delimitMate_expand_space = 1 " Turns on/off the expansion of <Space>
