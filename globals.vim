@@ -84,5 +84,7 @@ set foldmethod=indent
 set foldlevel=9
 set nofoldenable        "dont fold by default "
 
+set noshowmode
+
 let mapleader = ","
 let maplocalleader = "\\"

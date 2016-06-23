@@ -127,10 +127,10 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <expr><TAB>
+ \ pumvisible() ? "\<C-n>" :
+ \ neosnippet#expandable_or_jumpable() ?
+ \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
@@ -169,3 +169,10 @@ let g:syntastic_python_checkers       = ['flake8']
 let g:syntastic_javascript_checkers   = ['eslint']
 
 let g:user_emmet_expandabbr_key = '<c-e>'
+
+" fugitive
+nmap <c-a>a :Git add -p<CR>
+nmap <c-a>c :Gcommit<CR>
+nmap <c-a>f :Gpull<CR>
+nmap <c-a>p :Gpush<CR>
+nmap <c-a>s :Gstatus<CR>
