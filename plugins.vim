@@ -4,7 +4,8 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " limelight
 let g:limelight_default_coefficient = 0.7
-let g:limelight_conceal_ctermfg = 238
+let g:limelight_conceal_ctermfg = 231
+let g:limelight_conceal_guifg = '#f8f8f2'
 
 " you complete me
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -47,10 +48,78 @@ if executable('ag')
 endif
 nmap <leader>a :Ack<CR>
 
-" vim-airline
-let g:airline_powerline_fonts=1
-let g:airline_theme='wombat' " dark simple badwolf solarized solarized2
-set noshowmode
+let g:lightline = {
+      \ 'colorscheme': 'default',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'gitgutter', 'filename' ] ],
+      \   'right': [ [ 'percent', 'lineinfo' ],
+      \              [ 'syntastic' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'LightLineFugitive',
+      \   'gitgutter': 'LightLineGitGutter',
+      \   'readonly': 'LightLineReadonly',
+      \   'modified': 'LightLineModified',
+      \   'syntastic': 'SyntasticStatuslineFlag',
+      \   'filename': 'LightLineFilename'
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
+function! LightLineModified()
+  if &filetype == "help"
+    return ""
+  elseif &modified
+    return "+"
+  elseif &modifiable
+    return ""
+  else
+    return ""
+  endif
+endfunction
+
+function! LightLineReadonly()
+  if &filetype == "help"
+    return ""
+  elseif &readonly
+    return ""
+  else
+    return ""
+  endif
+endfunction
+
+function! LightLineFugitive()
+  return exists('*fugitive#head') ? fugitive#head() : ''
+endfunction
+
+function! LightLineGitGutter()
+  if ! exists('*GitGutterGetHunkSummary')
+        \ || ! get(g:, 'gitgutter_enabled', 0)
+        \ || winwidth('.') <= 90
+    return ''
+  endif
+  let symbols = [
+        \ g:gitgutter_sign_added,
+        \ g:gitgutter_sign_modified,
+        \ g:gitgutter_sign_removed
+        \ ]
+  let hunks = GitGutterGetHunkSummary()
+  let ret = []
+  for i in [0, 1, 2]
+    if hunks[i] > 0
+      call add(ret, symbols[i] . hunks[i])
+    endif
+  endfor
+  return join(ret, ' ')
+endfunction
+
+function! LightLineFilename()
+  return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+        \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
